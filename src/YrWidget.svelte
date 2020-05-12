@@ -28,6 +28,7 @@
 	let text = undefined
 	let temp = undefined
 	let windDirection = undefined
+	let windSpeed = undefined
 
 	const localeToDescription = {
 		"nn_NO": "desc_nn",
@@ -41,7 +42,7 @@
 		const {properties: {timeseries}} = await response.json()
 		const {data: timeSeriesItem} = timeseries.shift()
 		const {next_1_hours: {summary: {symbol_code}}} = timeSeriesItem
-		const {instant: {details: {air_temperature, wind_from_direction}}} = timeSeriesItem
+		const {instant: {details: {air_temperature, wind_from_direction, wind_speed}}} = timeSeriesItem
 
 		const symbols = icons.filter(i => i.key === symbol_code)
 		if (symbols.length > 0) {
@@ -51,6 +52,7 @@
 			text = weatherSymbol[selectedLocale]
 			temp = air_temperature
 			windDirection = wind_from_direction
+			windSpeed = wind_speed
 		}
 	})
 </script>
@@ -67,7 +69,7 @@
 				<span> {text} {temp}℃</span>
 			</div>
 			<div class="text">
-				<Wind degrees={windDirection} />
+				<Wind degrees={windDirection} speed={windSpeed} />
 			</div>
 	</div>
 {:else}
