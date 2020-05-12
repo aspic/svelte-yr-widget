@@ -23,7 +23,7 @@
 	import Wind from "./Wind.svelte";
 	import WeatherSymbol from "./WeatherSymbol.svelte";
 
-	export let lat, lon, name, locale;
+	export let lat, lon, locale;
 	let temp, windDirection, windSpeed, weatherSymbol = undefined
 
 	onMount(async () => {

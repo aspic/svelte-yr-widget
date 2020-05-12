@@ -17,7 +17,6 @@
     import { elasticOut } from 'svelte/easing';
     import { scale } from 'svelte/transition';
     export let symbolCode, locale = undefined
-
     let icon = undefined
     let description = undefined
 

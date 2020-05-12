@@ -7,6 +7,10 @@
     "start": "sirv public",
     "generate": "node ./bin/gen-js.js"
   },
+  "svelte": {
+    "name": "svelte-yr-widget",
+    "svelte": "src/YrWidget.svelte"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "11.0.2",
     "@rollup/plugin-node-resolve": "^7.0.0",
