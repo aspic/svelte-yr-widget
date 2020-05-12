@@ -4,8 +4,8 @@ const app = new App({
 	target: document.body,
 	props: {
 		name: 'Voss',
-		lat: '60.6494896',
-		lon: '6.5240693',
+		lat: '60.626714',
+		lon: '6.3995496',
 	}
 });
 
