@@ -21,10 +21,18 @@
 	import { fade } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 
-	export let lat, lon, name;
+	export let lat, lon, name, locale;
+
 	let icon = undefined
 	let text = undefined
 	let temp = undefined
+
+	const localeToDescription = {
+		"nn_NO": "desc_nn",
+		"nb_NO": "desc_nb",
+		"en_GB": "desc_en",
+	}
+	let selectedLocale = localeToDescription[locale] ? localeToDescription[locale] : localeToDescription["en_GB"];
 
 	onMount(async () => {
 		const response = await fetch(`https://api.met.no/weatherapi/locationforecast/2.0/?lat=${lat}&lon=${lon}`)
@@ -35,9 +43,9 @@
 
 		const symbols = icons.filter(i => i.key === symbol_code)
 		if(symbols.length > 0) {
-			const {svg, desc_nn} = symbols.shift()
-			icon = svg
-			text = desc_nn
+			const weatherSymbol = symbols.shift()
+			icon = weatherSymbol.svg
+			text = weatherSymbol[selectedLocale]
 			temp = air_temperature
 		}
 	})
