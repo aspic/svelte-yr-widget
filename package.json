@@ -1,6 +1,8 @@
 {
   "name": "svelte-yr-widget",
   "version": "0.0.1",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "scripts": {
     "build": "rollup -c",
     "dev": "node ./bin/gen-js.js && rollup -c -w",
@@ -14,12 +16,13 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "11.0.2",
     "@rollup/plugin-node-resolve": "^7.0.0",
-    "rollup": "^1.20.0",
+    "rollup": "^2.9.1",
     "rollup-plugin-livereload": "^1.0.0",
-    "rollup-plugin-svelte": "^5.0.3",
+    "rollup-plugin-svelte": "^5.2.1",
+    "rollup-plugin-svg": "^2.0.0",
     "rollup-plugin-terser": "^5.1.2",
     "svelte": "^3.0.0",
-    "rollup-plugin-svg": "^2.0.0"
+    "rollup-plugin-node-resolve": "^5.2.0"
   },
   "dependencies": {
     "@yr/weather-symbols": "^7.0.0",

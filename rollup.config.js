@@ -6,15 +6,14 @@ import { terser } from 'rollup-plugin-terser';
 import svg from 'rollup-plugin-svg'
 
 const production = !process.env.ROLLUP_WATCH;
+const pkg = require('./package.json');
 
 export default {
 	input: 'src/main.js',
-	output: {
-		sourcemap: true,
-		format: 'iife',
-		name: 'app',
-		file: 'public/build/bundle.js'
-	},
+	output: [
+		{ file: pkg.module, 'format': 'es' },
+		{ file: pkg.main, 'format': 'umd', name: 'Name' }
+	],
 	plugins: [
 		svelte({
 			// enable run-time checks when not in production

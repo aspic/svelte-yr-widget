@@ -15,8 +15,6 @@
 </style>
 
 <script>
-
-
 	import {onMount} from "svelte";
 	import {fade} from 'svelte/transition';
 	import {quintOut} from 'svelte/easing';
