@@ -15,8 +15,6 @@
     export let degrees = 0
     export let speed = 0
 
-    console.log(degrees)
-
     function rotate(node, { duration }) {
         return {
             duration,
