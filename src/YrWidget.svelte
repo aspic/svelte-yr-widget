@@ -16,16 +16,18 @@
 
 <script>
 
-	import { icons } from './icons'
-	import { onMount } from "svelte";
-	import { fade } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
+	import {icons} from './icons'
+	import {onMount} from "svelte";
+	import {fade} from 'svelte/transition';
+	import {quintOut} from 'svelte/easing';
+	import Wind from "./Wind.svelte";
 
 	export let lat, lon, name, locale;
 
 	let icon = undefined
 	let text = undefined
 	let temp = undefined
+	let windDirection = undefined
 
 	const localeToDescription = {
 		"nn_NO": "desc_nn",
@@ -36,17 +38,19 @@
 
 	onMount(async () => {
 		const response = await fetch(`https://api.met.no/weatherapi/locationforecast/2.0/?lat=${lat}&lon=${lon}`)
-		const {properties: { timeseries }} = await response.json()
-		const { data: timeSeriesItem } = timeseries.shift()
+		const {properties: {timeseries}} = await response.json()
+		const {data: timeSeriesItem} = timeseries.shift()
 		const {next_1_hours: {summary: {symbol_code}}} = timeSeriesItem
-		const { instant: {details: {air_temperature} } } = timeSeriesItem
+		const {instant: {details: {air_temperature, wind_from_direction}}} = timeSeriesItem
 
 		const symbols = icons.filter(i => i.key === symbol_code)
-		if(symbols.length > 0) {
+		if (symbols.length > 0) {
 			const weatherSymbol = symbols.shift()
+			console.log(timeSeriesItem)
 			icon = weatherSymbol.svg
 			text = weatherSymbol[selectedLocale]
 			temp = air_temperature
+			windDirection = wind_from_direction
 		}
 	})
 </script>
@@ -61,6 +65,9 @@
 			</div>
 			<div class="text">
 				<span> {text} {temp}℃</span>
+			</div>
+			<div class="text">
+				<Wind degrees={windDirection} />
 			</div>
 	</div>
 {:else}
