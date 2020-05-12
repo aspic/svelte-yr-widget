@@ -16,17 +16,17 @@ const variantToFile = async (data, key) => {
     const realId = old_id < 10 ? `0${old_id}` : `${old_id}`
 
     if(variants === null) {
-        return [await readFile(key, `node_modules/@yr/weather-symbols/dist/svg/${realId}.svg`, desc_nn, desc_en, desc_nb)]
+        return [await readFile(key, `./node_modules/@yr/weather-symbols/dist/svg/${realId}.svg`, desc_nn, desc_en, desc_nb)]
     } else {
 
         let files = []
         for (let i = 0; i < variants.length; i++) {
             const variant = variants[i]
             if(variant === 'day') {
-                const res = await readFile(`${key}_${variant}`, `node_modules/@yr/weather-symbols/dist/svg/${realId}d.svg`, desc_nn, desc_en, desc_nb)
+                const res = await readFile(`${key}_${variant}`, `./node_modules/@yr/weather-symbols/dist/svg/${realId}d.svg`, desc_nn, desc_en, desc_nb)
                 files.push(res)
             } else if(variant === 'night') {
-                const res = await readFile(`${key}_${variant}`, `node_modules/@yr/weather-symbols/dist/svg/${realId}n.svg`, desc_nn, desc_en, desc_nb)
+                const res = await readFile(`${key}_${variant}`, `./node_modules/@yr/weather-symbols/dist/svg/${realId}n.svg`, desc_nn, desc_en, desc_nb)
                 files.push(res)
             }
         }
@@ -35,7 +35,7 @@ const variantToFile = async (data, key) => {
 }
 
 async function readAndSet() {
-    const data = await fs.readFile("bin/legends.json", "UTF8");
+    const data = await fs.readFile("./legends.json", "UTF8");
     const defs = JSON.parse(data)
     let all = []
     const keys = Object.keys(defs)
@@ -44,7 +44,7 @@ async function readAndSet() {
     }
     const map = JSON.stringify(all)
     const js = `export const icons = ${map}`
-    await fs.writeFile('src/icons.js', js)
+    await fs.writeFile('../src/icons.js', js)
 }
 
 readAndSet()

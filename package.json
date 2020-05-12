@@ -5,9 +5,9 @@
   "module": "dist/index.mjs",
   "scripts": {
     "build": "rollup -c",
-    "dev": "node ./bin/gen-js.js && rollup -c -w",
+    "dev": "rollup -c -w",
     "start": "sirv public",
-    "generate": "node ./bin/gen-js.js"
+    "generate": "cd bin/ && node gen-js.js"
   },
   "svelte": {
     "name": "svelte-yr-widget",
@@ -25,7 +25,6 @@
     "rollup-plugin-node-resolve": "^5.2.0"
   },
   "dependencies": {
-    "@yr/weather-symbols": "^7.0.0",
     "sirv-cli": "^0.4.4"
   }
 }

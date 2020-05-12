@@ -1,0 +1,9 @@
+{
+  "name": "bin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@yr/weather-symbols": "^7.0.0"
+  }
+}
