@@ -14,7 +14,8 @@
 <script>
 
     import {icons} from './icons'
-    import { elasticIn } from 'svelte/easing';
+    import { elasticOut } from 'svelte/easing';
+    import { scale } from 'svelte/transition';
     export let symbolCode, locale = undefined
 
     let icon = undefined
@@ -33,21 +34,12 @@
         icon = weatherSymbol.svg
         description = weatherSymbol[selectedLocale]
     }
-    function rotate(node, { duration }) {
-        return {
-            duration,
-            css: t => {
-                const eased = elasticIn(1-t);
-                return `transform: rotate(${-90 * eased}deg);`
-            }
-        };
-    }
 
 </script>
 
 {#if icon}
     <div class="container">
-        <div class="icon" in:rotate="{{duration: 2000}}">{@html icon}</div>
+        <div class="icon" in:scale="{{duration: 800, easing: elasticOut}}">{@html icon}</div>
         <span>{description}</span>
     </div>
 {:else}

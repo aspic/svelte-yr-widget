@@ -24,11 +24,7 @@
 	import WeatherSymbol from "./WeatherSymbol.svelte";
 
 	export let lat, lon, name, locale;
-
-	let temp = undefined
-	let windDirection = undefined
-	let windSpeed = undefined
-	let weatherSymbol = undefined
+	let temp, windDirection, windSpeed, weatherSymbol = undefined
 
 	onMount(async () => {
 		const response = await fetch(`https://api.met.no/weatherapi/locationforecast/2.0/?lat=${lat}&lon=${lon}`)
