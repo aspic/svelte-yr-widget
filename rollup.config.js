@@ -11,8 +11,8 @@ const pkg = require('./package.json');
 export default {
 	input: 'src/main.js',
 	output: [
-		{ file: !production ? `public/${pkg.module}` : pkg.module, 'format': 'es' },
-		{ file: !production ? `public/${pkg.main}` : pkg.main, 'format': 'umd', name: 'Name' }
+		{ file: !production ? `docs/${pkg.module}` : pkg.module, 'format': 'es' },
+		{ file: !production ? `docs/${pkg.main}` : pkg.main, 'format': 'umd', name: 'Name' }
 	],
 	plugins: [
 		svelte({
@@ -21,7 +21,7 @@ export default {
 			// we'll extract any component CSS out into
 			// a separate file - better for performance
 			css: css => {
-				css.write(!production ? `public/dist/bundle.css` : 'dist/bundle.css');
+				css.write(!production ? `docs/dist/bundle.css` : 'dist/bundle.css');
 			}
 		}),
 
