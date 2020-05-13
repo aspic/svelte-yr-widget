@@ -1,6 +1,6 @@
 {
   "name": "svelte-yr-widget",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "svelte": "src/index.js",
