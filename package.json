@@ -5,7 +5,7 @@
   "module": "dist/index.mjs",
   "svelte": "src/index.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c && cp -R dist docs/ && cp public/index.html docs/",
     "dev": "rollup -c -w",
     "start": "sirv public",
     "generate": "cd bin/ && node gen-js.js"
