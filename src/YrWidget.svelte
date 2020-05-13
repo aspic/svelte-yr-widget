@@ -21,7 +21,7 @@
 	import Wind from "./Wind.svelte";
 	import WeatherSymbol from "./WeatherSymbol.svelte";
 
-	export let lat, lon, locale;
+	export let lat, lon, locale, place;
 	let temp, windDirection, windSpeed, weatherSymbol = undefined
 
 	onMount(async () => {
@@ -41,15 +41,20 @@
 
 {#if weatherSymbol}
 	<div class="container" transition:fade="{{duration: 1000 }}">
+		{#if place}
 			<div class="text">
-				<WeatherSymbol symbolCode={weatherSymbol} locale={locale} />
+				{place}
 			</div>
-			<div class="text">
-				<span>{temp}℃</span>
-			</div>
-			<div class="text">
-				<Wind degrees={windDirection} speed={windSpeed} />
-			</div>
+		{/if}
+		<div class="text">
+			<WeatherSymbol symbolCode={weatherSymbol} locale={locale} />
+		</div>
+		<div class="text">
+			<span>{temp}℃</span>
+		</div>
+		<div class="text">
+			<Wind degrees={windDirection} speed={windSpeed} />
+		</div>
 	</div>
 {:else}
 	<div class="container"></div>
