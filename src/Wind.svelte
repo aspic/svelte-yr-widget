@@ -11,7 +11,7 @@
 <script>
 
     import { elasticOut } from 'svelte/easing';
-    const full = 180
+    const initialRotation = 90
     export let degrees = 0
     export let speed = 0
 
@@ -21,14 +21,14 @@
             css: t => {
                 const eased = elasticOut(t);
 
-                return `transform: rotate(${(full - degrees) * eased}deg);`
+                return `transform: rotate(${(initialRotation + degrees) * eased}deg);`
             }
         };
     }
 </script>
 
 {#if degrees}
-    <div transition:rotate="{{duration: 2000}}" style='transform: rotate({full - degrees}deg)'>
+    <div transition:rotate="{{duration: 2000}}" style='transform: rotate({initialRotation + degrees}deg)'>
         <span>⟼</span>
     </div>
     <span>{speed} m/s</span>
