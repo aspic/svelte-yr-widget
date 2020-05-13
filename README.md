@@ -1,5 +1,7 @@
 # svelte-yr-widget
 
+**Demo:** [widget](https://aspic.github.io/svelte-yr-widget/) 
+
 A simple widget for showing weather data from [Yr.no](https://www.yr.no/?spr=eng).
 
 Relevant API documentation: [api.met.no](https://api.met.no/weatherapi/locationforecast/2.0/documentation)
