@@ -7,7 +7,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public",
+    "start": "sirv dist",
     "generate": "cd bin/ && node gen-js.js"
   },
   "devDependencies": {
