@@ -6,6 +6,7 @@ const app = new App({
 		name: 'Voss',
 		lat: '60.6266895',
 		lon: '6.38204',
+		locale: 'en_GB'
 	}
 });
 
